@@ -59,7 +59,7 @@ namespace CatAlog.Db.ModelsConfiguration.VideoTemplateConfig
                             Rating = 8.5f,
                             Description = Terminator,
                             Duration = "2, 17, 08",
-                            TitleImage = @"L:\MyProjects\WPF\ExamenWork\Catalog\CatAlog.GUI\bin\Debug\netcoreapp3.1\Scrinshots\Terminator 2\title.png",
+                            TitleImage = @"L:\ExamProject\CatAlog\CatAlog.GUI\bin\Debug\netcoreapp3.1\Scrinshots\Terminator 2\title.png",
                             ReleaseDate = "1991, 1, 1",
                             GeneralTypeId = 1,
                             TemplateId = 1
@@ -70,7 +70,7 @@ namespace CatAlog.Db.ModelsConfiguration.VideoTemplateConfig
                             Rating = 7.2f,
                             Description = Inferno,
                             Duration = "1, 45, 22",
-                            TitleImage = @"L:\MyProjects\WPF\ExamenWork\Catalog\CatAlog.GUI\bin\Debug\netcoreapp3.1\Scrinshots\Inferno\title.jpg",
+                            TitleImage = @"L:\ExamProject\CatAlog\CatAlog.GUI\bin\Debug\netcoreapp3.1\Scrinshots\Inferno\title.jpg",
                             ReleaseDate = "1999, 1, 1",
                             GeneralTypeId = 1,
                             TemplateId = 1
@@ -81,7 +81,7 @@ namespace CatAlog.Db.ModelsConfiguration.VideoTemplateConfig
                             Rating = 7.5f,
                             Description = LittleMonsters,
                             Duration = "1, 33, 43",
-                            TitleImage = @"L:\MyProjects\WPF\ExamenWork\Catalog\CatAlog.GUI\bin\Debug\netcoreapp3.1\Scrinshots\Little Monsters\title.jpg",
+                            TitleImage = @"L:\ExamProject\CatAlog\CatAlog.GUI\bin\Debug\netcoreapp3.1\Scrinshots\Little Monsters\title.jpg",
                             ReleaseDate = "2019, 1, 1",
                             GeneralTypeId = 1,
                             TemplateId = 1
@@ -92,7 +92,7 @@ namespace CatAlog.Db.ModelsConfiguration.VideoTemplateConfig
                             Rating = 9.3f,
                             Description = Batman,
                             Duration = "1, 22, 06",
-                            TitleImage = @"L:\MyProjects\WPF\ExamenWork\Catalog\CatAlog.GUI\bin\Debug\netcoreapp3.1\Scrinshots\Batman - Hush\title.jpg",
+                            TitleImage = @"L:\ExamProject\CatAlog\CatAlog.GUI\bin\Debug\netcoreapp3.1\Scrinshots\Batman - Hush\title.jpg",
                             ReleaseDate = "2019, 1, 1",
                             GeneralTypeId = 2,
                             TemplateId = 1
@@ -103,7 +103,7 @@ namespace CatAlog.Db.ModelsConfiguration.VideoTemplateConfig
                             Rating = 9.4f,
                             Description = BlackFox,
                             Duration = "1, 30, 00",
-                            TitleImage = @"L:\MyProjects\WPF\ExamenWork\Catalog\CatAlog.GUI\bin\Debug\netcoreapp3.1\Scrinshots\Black fox\title.jpg",
+                            TitleImage = @"L:\ExamProject\CatAlog\CatAlog.GUI\bin\Debug\netcoreapp3.1\Scrinshots\Black fox\title.jpg",
                             ReleaseDate = "2019, 10, 5",
                             GeneralTypeId = 2,
                             TemplateId = 1
@@ -114,7 +114,7 @@ namespace CatAlog.Db.ModelsConfiguration.VideoTemplateConfig
                             Rating = 9.8f,
                             Description = Pokemon,
                             Duration = "0, 21, 00",
-                            TitleImage = @"L:\MyProjects\WPF\ExamenWork\Catalog\CatAlog.GUI\bin\Debug\netcoreapp3.1\Scrinshots\Pokemon, Black and White - Adventures in Unova\title.jpg",
+                            TitleImage = @"L:\ExamProject\CatAlog\CatAlog.GUI\bin\Debug\netcoreapp3.1\Scrinshots\Pokemon, Black and White - Adventures in Unova\title.jpg",
                             ReleaseDate = "2013, 1, 1",
                             GeneralTypeId = 3,
                             TemplateId = 1

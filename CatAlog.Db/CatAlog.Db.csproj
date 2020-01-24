@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Models\DtoModels\GameModels\" />
     <Folder Include="Models\GameTemplate\" />
   </ItemGroup>
 

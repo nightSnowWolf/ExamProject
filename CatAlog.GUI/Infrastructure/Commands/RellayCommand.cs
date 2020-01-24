@@ -7,6 +7,7 @@ namespace CatAlog.GUI.Infrastructure.Commands
     {
         private Action<object> _execute;
         private Predicate<object> _canExecute;
+        private Action<string> getSampleData;
 
         public event EventHandler CanExecuteChanged
         {
@@ -26,6 +27,11 @@ namespace CatAlog.GUI.Infrastructure.Commands
             }
             _execute = execute;
             _canExecute = canExecute;
+        }
+
+        public RellayCommand(Action<string> getSampleData)
+        {
+            this.getSampleData = getSampleData;
         }
 
         public bool CanExecute(object parameter)

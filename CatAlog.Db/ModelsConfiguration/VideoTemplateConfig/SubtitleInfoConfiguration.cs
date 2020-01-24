@@ -19,7 +19,7 @@ namespace CatAlog.Db.ModelsConfiguration.VideoTemplateConfig
                              Author = "Киномания",
                              Language = "Английский",
                              SubtitleFormat = "SRT",
-                             Note = "(ненормативная лексика)",
+                             Note = "ненормативная лексика",
                              MediaId = 1
                          },
                          new SubtitleInfo()
@@ -28,7 +28,7 @@ namespace CatAlog.Db.ModelsConfiguration.VideoTemplateConfig
                              Author = "Юрий Сербин",
                              Language = "Русский",
                              SubtitleFormat = "ASS",
-                             Note = "(ненормативная лексика)",
+                             Note = "ненормативная лексика",
                              MediaId = 1
                          },
                          new SubtitleInfo()
@@ -37,7 +37,7 @@ namespace CatAlog.Db.ModelsConfiguration.VideoTemplateConfig
                              Author = "Ziggy Team & Serick Sub",
                              Language = "Английский",
                              SubtitleFormat = "ASS",
-                             Note = "(ненормативная лексика)",
+                             Note = "ненормативная лексика",
                              MediaId = 3
                          },
                          new SubtitleInfo()
@@ -46,7 +46,7 @@ namespace CatAlog.Db.ModelsConfiguration.VideoTemplateConfig
                              Author = "Киномания",
                              Language = "Русский",
                              SubtitleFormat = "SRT",
-                             Note = "(ненормативная лексика)",
+                             Note = "ненормативная лексика",
                              MediaId = 4
                          },
                          new SubtitleInfo()
@@ -55,7 +55,7 @@ namespace CatAlog.Db.ModelsConfiguration.VideoTemplateConfig
                              Author = "Ziggy Team & Serick Sub",
                              Language = "Русский",
                              SubtitleFormat = "SRT",
-                             Note = "(ненормативная лексика)",
+                             Note = "ненормативная лексика",
                              MediaId = 4
                          }
                     }

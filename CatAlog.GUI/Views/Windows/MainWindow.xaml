@@ -3,10 +3,173 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CatAlog.GUI"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:Converters="clr-namespace:CatAlog.GUI.Infrastructure.Converters"
+        xmlns:Controls="clr-namespace:CatAlog.GUI.Views.CustomControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="700" 
+        MinHeight="700"
+        Width="1100"
+        MinWidth="900"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Converters:VisibilityConverter x:Key="visibilityConverter"/>
+        <Converters:ListToStringConverter x:Key="listToStringConverter"/>
+        <Converters:EpisodeNameConverter x:Key="episodeNameConverter"/>
+        <Converters:SerialTypeConverter x:Key="serialTypeConverter"/>
+    </Window.Resources>
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1.1*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="1.0*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+            <MenuItem Header="File">
+                <MenuItem Header="Options"/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About"/>
+            </MenuItem>
+        </Menu>
+        <ToolBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+            <Button Content="Add"/>
+        </ToolBar>
+        <StackPanel Grid.Row="2" Grid.RowSpan="4" Grid.Column="0" Orientation="Vertical" Margin="5">
+            <TreeView MinWidth="150" MinHeight="100" ItemsSource="{Binding RecordsType}" x:Name="treeView">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectedItemChanged">
+                        <i:InvokeCommandAction Command="{Binding GetSampleDataCommand}" 
+                                               CommandParameter="{Binding ElementName=treeView, Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TreeView>
+            <Expander Header="Filters" Margin="0, 10, 0, 0">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock>
+                            <Hyperlink Command="{Binding GetAllAction}">Action</Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </Expander>
+        </StackPanel>
+        <ComboBox Grid.Row="2"
+                  Grid.Column="1" 
+                  HorizontalAlignment="Right" 
+                  Width="100" 
+                  Margin="0, 5, 5, 0" 
+                  SelectedIndex="0" 
+                  x:Name="mainListBoxViewSwitch">
+            <TextBlock Text="Compact"/>
+            <TextBlock Text="Extended"/>
+        </ComboBox>
+        <ListBox Grid.Row="3" 
+                 Grid.RowSpan="3" 
+                 Grid.Column="1"
+                 MinWidth="200" 
+                 Margin="0, 5, 5, 5" 
+                 ItemsSource="{Binding SampleDatas}" 
+                 SelectedItem="{Binding SelectedRecord}"
+                 Style="{StaticResource mainListBoxStyle}"
+                 x:Name="mainListBox">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding GetAllDataCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ListBox>
+        <Label Grid.Row="2" 
+               Grid.Column="2" 
+               Grid.ColumnSpan="2" 
+               Margin="3" 
+               Content="{Binding GeneralInfo.Names[0]}" 
+               HorizontalContentAlignment="Center" 
+               FontWeight="Bold"/>
+        <Label Grid.Row="3" 
+               Grid.Column="2" 
+               Grid.ColumnSpan="2" 
+               Margin="3" 
+               Content="{Binding GeneralInfo.Names[1]}" 
+               HorizontalContentAlignment="Center" 
+               FontWeight="Bold"/>
+        <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Vertical">
+            <Image Source="{Binding GeneralInfo.TitleImage}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="3" Orientation="Vertical" Margin="5, 0, 3, 0">
+            <StackPanel.Resources>
+                <Style TargetType="Controls:TextFieldWithTitleControl">
+                    <Style.Setters>
+                        <Setter Property="Margin" Value="0, 3, 5, 0"/>
+                    </Style.Setters>
+                </Style>
+            </StackPanel.Resources>
+            <Controls:TextFieldWithTitleControl TitleName="Company: " Text="{Binding AdditionalInfo.Companies, Converter={StaticResource listToStringConverter}}"/>
+            <Controls:TextFieldWithTitleControl TitleName="Release date: " Text="{Binding GeneralInfo.ReleaseDate}"/>
+            <Controls:TextFieldWithTitleControl TitleName="Duration: " Text="{Binding GeneralInfo.Duration}"/>
+            <Controls:TextFieldWithTitleControl TitleName="Type: " Text="{Binding SerialInfo, Converter={StaticResource serialTypeConverter}}"/>
+            <Controls:TextFieldWithTitleControl TitleName="Country: " Text="{Binding AdditionalInfo.Countries, Converter={StaticResource listToStringConverter}}"/>
+            <Controls:TextFieldWithTitleControl TitleName="Genre: " Text="{Binding AdditionalInfo.Genres, Converter={StaticResource listToStringConverter}}"/>
+            <Controls:TextFieldWithTitleControl TitleName="Regisseur: " Text="{Binding AdditionalInfo.Regisseurs, Converter={StaticResource listToStringConverter}}"/>
+            <Controls:TextFieldWithTitleControl TitleName="Screenwriter: " Text="{Binding AdditionalInfo.Screenwriters, Converter={StaticResource listToStringConverter}}"/>
+            <Controls:TextFieldWithTitleControl TitleName="Actors: " Text="{Binding AdditionalInfo.Actors, Converter={StaticResource listToStringConverter}}"/>
+        </StackPanel>
+        <TabControl Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 0, 5, 5">
+            <TabItem Header="Description" IsSelected="True">
+                <TabItem.Content>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                        <TextBox IsReadOnly="True" TextWrapping="Wrap" Text="{Binding GeneralInfo.Description}" Padding="5" Margin="5"/>
+                    </ScrollViewer>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Series" Visibility="{Binding ElementName=seriesTextBox, Path=Text, Converter={StaticResource visibilityConverter}}">
+                <TextBox IsReadOnly="True" 
+                         Text="{Binding SerialInfo, Converter={StaticResource episodeNameConverter}}" 
+                         Padding="10, 5, 5, 5" 
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                         x:Name="seriesTextBox"/>
+            </TabItem>
+            <TabItem Header="Screenshots">
+                <Controls:ScreenshotsListControl DataList="{Binding GeneralInfo.Screenshots}"/>
+            </TabItem>
+            <TabItem Header="Media">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Controls:TextFieldWithTitleControl TitleName="Size:" Text="{Binding MediaInfo.Size}"/>
+                    <ComboBox Grid.Row="1" Margin="3" HorizontalAlignment="Right" Width="100" SelectedIndex="0" x:Name="mediaListBoxViewSwitch">
+                        <TextBlock Text="Compact"/>
+                        <TextBlock Text="Extended"/>
+                    </ComboBox>
+                    <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                        <StackPanel Orientation="Vertical">
+                            <ListBox ItemsSource="{Binding VideoInfo}" Style="{StaticResource videoInfoListBoxStyle}"/>
+                            <ListBox ItemsSource="{Binding AudioInfo}" Style="{StaticResource audioInfoListBoxStyle}"/>
+                            <ListBox ItemsSource="{Binding SubtitleInfo}" Style="{StaticResource subtitleInfoListBoxStyle}"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>                
+            </TabItem>
+            <TabItem Header="Note" Visibility="{Binding ElementName=noteView, Path=Text, Converter={StaticResource visibilityConverter}}">
+                <TextBlock Text="{Binding AdditionalInfo.Note}" x:Name="noteView"/>
+            </TabItem>
+        </TabControl>
+        <StatusBar Grid.Row="6" Grid.ColumnSpan="4">
+            <Label Content="Element"/>
+        </StatusBar>
     </Grid>
 </Window>

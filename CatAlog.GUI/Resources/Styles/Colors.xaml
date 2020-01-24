@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="000">Orange</Color>
+    <Color x:Key="001">Gray</Color>
+
+    <SolidColorBrush x:Key="selectedItemListBoxColor" Color="{StaticResource 000}" Opacity="0.4"/>
+    <SolidColorBrush x:Key="grayBolderBrush" Color="{StaticResource 001}"/>
+
+</ResourceDictionary>
