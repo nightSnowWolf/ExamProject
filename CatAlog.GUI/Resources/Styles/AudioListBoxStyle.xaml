@@ -1,11 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Controls="clr-namespace:CatAlog.GUI.Views.CustomControls">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Colors.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type ListBox}" x:Key="videoListBoxStyle">
+    <Style TargetType="{x:Type ListBox}" x:Key="audioListBoxStyle">
         <Setter Property="BorderThickness" Value="0.5"/>
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
@@ -16,8 +17,9 @@
                                 <Border BorderThickness="0, 0, 0, 0.5" 
                                         BorderBrush="{StaticResource grayBolderBrush}" 
                                         x:Name="mainBorder">
-                                    <Grid>                                        
+                                    <Grid Margin="5">
                                         <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
@@ -25,9 +27,6 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto"/>
-                                            <ColumnDefinition Width="auto"/>
-                                            <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="auto"/>
@@ -42,64 +41,59 @@
                                                 <Setter Property="IsReadOnly" Value="False"/>
                                                 <Setter Property="IsEditable" Value="True"/>
                                                 <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                                <Setter Property="Width" Value="160"/>
                                             </Style>
                                             <Style TargetType="{x:Type TextBox}">
                                                 <Setter Property="Margin" Value="5"/>
+                                                <Setter Property="Width" Value="160"/>
                                             </Style>
                                         </Grid.Resources>
-                                        <Label Content="Video record №"/>
-                                        <Label Grid.Row="1" Content="Quality:"/>
+                                        <Label Content="Audio record №"/>
+                                        <Label Grid.Row="1" Content="AudioFormat:"/>
                                         <ComboBox Grid.Row="1" 
                                                   Grid.Column="1" 
-                                                  ItemsSource="{Binding ElementName=videoList, Path=DataContext.Quality}" 
-                                                  Text="{Binding VideoQuality}"                       
-                                                  Width="130"/>
+                                                  ItemsSource="{Binding ElementName=audioList, Path=DataContext.AudioFormat}" 
+                                                  Text="{Binding AudioFormat}"/>
                                         <Label Grid.Row="1" Grid.Column="2" Content="Bitrate:"/>
                                         <TextBox Grid.Row="1" 
                                                  Grid.Column="3" 
-                                                 Grid.ColumnSpan="3" 
-                                                 Text="{Binding Bitrate}" 
-                                                 Width="190"/>
-                                        <Label Grid.Row="2" Content="Relation:"/>
+                                                 Text="{Binding Bitrate}"/>
+                                        <Label Grid.Row="2" Content="Channels:"/>
                                         <ComboBox Grid.Row="2" 
-                                                  Grid.Column="1" 
-                                                  ItemsSource="{Binding ElementName=videoList, Path=DataContext.Relation}" 
-                                                  Text="{Binding Relation}" 
-                                                  Width="130"/>
-                                        <Label Grid.Row="2" Grid.Column="2" Content="Width:"/>
-                                        <ComboBox Grid.Row="2" 
-                                                  Grid.Column="3" 
-                                                  ItemsSource="{Binding ElementName=videoList, Path=DataContext.ResolutionWidth}"
-                                                  Text="{Binding ResolutionWidth}"
-                                                  Width="60"/>
-                                        <Label Grid.Row="2" Grid.Column="4" Content="Height:"/>
-                                        <ComboBox Grid.Row="2"
-                                                  Grid.Column="5"
-                                                  ItemsSource="{Binding ElementName=videoList, Path=DataContext.ResolutionHeigth}"
-                                                  Text="{Binding ResolutionHeigth}"
-                                                  Width="60"/>
-                                        <Label Grid.Row="3" Content="Video format:"/>
-                                        <ComboBox Grid.Row="3" 
                                                   Grid.Column="1"
-                                                  ItemsSource="{Binding ElementName=videoList, Path=DataContext.VideoFormats}"
-                                                  Text="{Binding VideoFormat}"
-                                                  Width="130"/>
-                                        <Label Grid.Row="3" Grid.Column="2" Content="Frame rate:"/>
-                                        <TextBox Grid.Row="3" 
+                                                  ItemsSource="{Binding ElementName=audioList, Path=DataContext.Channel}" 
+                                                  Text="{Binding Channel}"/>
+                                        <Label Grid.Row="2" Grid.Column="2" Content="Frequency:"/>
+                                        <TextBox Grid.Row="2" 
                                                  Grid.Column="3" 
-                                                 Grid.ColumnSpan="3" 
-                                                 Text="{Binding FrameRate}" 
-                                                 Width="190"/>
-                                        <Label Grid.Row="4" Content="Note:"/>
+                                                 Text="{Binding Frequency}"/>
+                                        <Label Grid.Row="3" Grid.Column="0" Content="Language:"/>
+                                        <ComboBox Grid.Row="3" 
+                                                  Grid.Column="1" 
+                                                  ItemsSource="{Binding ElementName=audioList, Path=DataContext.Language}" 
+                                                  Text="{Binding Language}"/>
+                                        <Label Grid.Row="3" Grid.Column="2" Content="Author:"/>
+                                        <ComboBox Grid.Row="3" 
+                                                  Grid.Column="3" 
+                                                  ItemsSource="{Binding ElementName=audioList, Path=DataContext.Author}" 
+                                                  Text="{Binding Author}"/>
+                                        <Label Grid.Row="4" Grid.Column="0" Content="Dubbings:"/>
                                         <TextBox Grid.Row="4" 
-                                                 Grid.Column="1"
-                                                 Grid.ColumnSpan="5" 
-                                                 Text="{Binding Note}" 
-                                                 AcceptsReturn="True" 
+                                                 Grid.Column="1" 
+                                                 Grid.ColumnSpan="3" 
                                                  TextWrapping="Wrap" 
-                                                 Height="50" 
-                                                 Width="410" 
-                                                 VerticalScrollBarVisibility="Auto"/>
+                                                 AcceptsReturn="True" 
+                                                 Text="{Binding Dubbings}" 
+                                                 Height="60" 
+                                                 Width="410"/>
+                                        <Label Grid.Row="5" Grid.Column="0" Content="Note:"/>
+                                        <TextBox Grid.Row="5" 
+                                                 Grid.Column="1" 
+                                                 Grid.ColumnSpan="3" 
+                                                 TextWrapping="Wrap" 
+                                                 AcceptsReturn="True" 
+                                                 Text="{Binding Note}" 
+                                                 Width="410"/>
                                     </Grid>
                                 </Border>
                                 <ControlTemplate.Triggers>
@@ -114,5 +108,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
 </ResourceDictionary>

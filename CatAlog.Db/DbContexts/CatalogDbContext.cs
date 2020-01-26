@@ -27,8 +27,6 @@ namespace CatAlog.Db.DbContexts
         public DbSet<AdditionallyInfo_Genre> AdditionallyInfo_Genres { get; set; }
         public DbSet<AdditionallyInfo_Regisseur> AdditionallyInfo_Regisseurs { get; set; }
         public DbSet<AdditionallyInfo_Screenwriter> AdditionallyInfo_Screenwriters { get; set; }
-        public DbSet<AudioInfo_Actor> AudioInfo_Actors { get; set; }
-
         public DbSet<AdditionallyInfo> AdditionallyInfos { get; set; }
         public DbSet<AudioInfo> AudioInfos { get; set; }
         public DbSet<Episode> Episodes { get; set; }
@@ -69,7 +67,6 @@ namespace CatAlog.Db.DbContexts
             modelBuilder.ApplyConfiguration<Template>(new TemplateConfiguration());
             
             modelBuilder.ApplyConfiguration<AdditionallyInfo_Actor>(new AdditionallyInfo_ActorConfiguration());
-            modelBuilder.ApplyConfiguration<AudioInfo_Actor>(new AudioInfo_ActorConfiguration());
             modelBuilder.ApplyConfiguration<AdditionallyInfo_Company>(new AdditionallyInfo_CompanyConfiguration());
             modelBuilder.ApplyConfiguration<AdditionallyInfo_Country>(new AdditionallyInfo_CountryConfiguration());
             modelBuilder.ApplyConfiguration<AdditionallyInfo_Genre>(new AdditionallyInfo_GenreConfiguration());

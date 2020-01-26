@@ -15,14 +15,14 @@ namespace CatAlog.GUI.Services
 
         public string Title
         {
-            get { return (string)GetValue(TitleProperty); }
-            set { SetValue(TitleProperty, value); }
+            get => (string)GetValue(TitleProperty); 
+            set => SetValue(TitleProperty, value); 
         }
 
         public object Package
         {
-            get { return (object)GetValue(PackageProperty); }
-            set { SetValue(PackageProperty, value); }
+            get => (object)GetValue(PackageProperty); 
+            set => SetValue(PackageProperty, value); 
         }
 
         static WindowsManager()
@@ -31,7 +31,7 @@ namespace CatAlog.GUI.Services
             PackageProperty = DependencyProperty.Register("Package", typeof(object), typeof(WindowsManager));
         }
 
-        protected virtual void Closad()
+        protected virtual void Closed()
         { }
 
         public bool Close()

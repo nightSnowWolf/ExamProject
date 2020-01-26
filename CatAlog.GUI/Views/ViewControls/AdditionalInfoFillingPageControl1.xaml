@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="CatAlog.GUI.Views.ViewControls.AdditionalInfoFillingPageControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Controls="clr-namespace:CatAlog.GUI.Views.CustomControls">
+    <GroupBox Header="Additional information" Margin="5" Background="White" Height="650" Width="650">
+        <GroupBox.Resources>
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+            <Style TargetType="{x:Type Controls:TextBoxWithPopup}">
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="MinHeight" Value="55"/>
+            </Style>
+        </GroupBox.Resources>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Genres"/>
+            <Controls:TextBoxWithPopup Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" SourceItems="{Binding Genres}"
+                                    Text="{Binding AdditionalInfo.Genres, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Grid.Row="1" Content="Countries"/>
+            <Controls:TextBoxWithPopup Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" SourceItems="{Binding Countries}" 
+                                    Text="{Binding AdditionalInfo.Countries, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Grid.Row="2" Content="Companies"/>
+            <Controls:TextBoxWithPopup Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" SourceItems="{Binding Companies}"
+                                    Text="{Binding AdditionalInfo.Companies, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Grid.Row="3" Content="Regisseurs"/>
+            <Controls:TextBoxWithPopup Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" SourceItems="{Binding Regisseurs}"
+                                    Text="{Binding AdditionalInfo.Regisseurs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Grid.Row="4" Content="Screenwriters"/>
+            <Controls:TextBoxWithPopup Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" SourceItems="{Binding Screenwriters}"
+                                    Text="{Binding AdditionalInfo.Screenwriters, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Grid.Row="5" Content="Actors"/>
+            <Controls:TextBoxWithPopup Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" SourceItems="{Binding Actors}"
+                                    Text="{Binding AdditionalInfo.Actors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Grid.Row="6" Content="ReleaseAuthor"/>
+            <ComboBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" IsReadOnly="False" IsEditable="True" 
+                      ItemsSource="{Binding ReleaseAuthors}" Text="{Binding AdditionalInfo.ReleaseAuthor}" DisplayMemberPath="Value"/>
+            <Label Grid.Row="7" Content="Note:"/>
+            <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding AdditionalInfo.Note}" AcceptsReturn="True" MinHeight="130" Margin="5"/>
+        </Grid>
+    </GroupBox>
+</UserControl>
+

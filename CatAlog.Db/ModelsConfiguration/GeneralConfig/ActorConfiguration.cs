@@ -45,7 +45,7 @@ namespace CatAlog.Db.ModelsConfiguration.GeneralConfig
                         new Actor() { Id = 31, Name = "Дизель Ла Торрак"       },
                         new Actor() { Id = 32, Name = "Саския Бурмайстер"      },
                         new Actor() { Id = 33, Name = "Рахель Абдулрахман"     },
-                        new Actor() { Id = 34, Name = "Лариса Некипелова"      }, // pokemon
+                        new Actor() { Id = 34, Name = "Лариса Некипелова"      }, 
                         new Actor() { Id = 35, Name = "Дарья Фролова"          },
                         new Actor() { Id = 36, Name = "Жанна Никонова"         },
                         new Actor() { Id = 37, Name = "Дмитрий Филимонов"      },
@@ -60,7 +60,7 @@ namespace CatAlog.Db.ModelsConfiguration.GeneralConfig
                         new Actor() { Id = 46, Name = "Даниил Эльдаров"        },
                         new Actor() { Id = 47, Name = "Михаил Тихонов"         },
                         new Actor() { Id = 48, Name = "Антон Ковалев"          },
-                        new Actor() { Id = 49, Name = "Сачие Алессио"          }, // batman
+                        new Actor() { Id = 49, Name = "Сачие Алессио"          }, 
                         new Actor() { Id = 50, Name = "Стюарт Аллан"           },
                         new Actor() { Id = 51, Name = "Джеффри Аренд"          },
                         new Actor() { Id = 52, Name = "Джеймс Гаррет"          },

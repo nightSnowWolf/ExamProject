@@ -19,7 +19,5 @@ namespace CatAlog.Db.Models.DtoModels.VideoModels
         public string Author { get; set; }
 
         public string Note { get; set; }
-
-        public List<string> Dubbings { get; set; }
     }
 }

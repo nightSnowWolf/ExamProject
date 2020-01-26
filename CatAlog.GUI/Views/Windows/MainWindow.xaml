@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:Converters="clr-namespace:CatAlog.GUI.Infrastructure.Converters"
+        xmlns:Models="clr-namespace:CatAlog.GUI.ViewModels"
         xmlns:Controls="clr-namespace:CatAlog.GUI.Views.CustomControls"
+        xmlns:Views="clr-namespace:CatAlog.GUI.Views.ViewControls"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="700" 
@@ -18,6 +20,7 @@
         <Converters:ListToStringConverter x:Key="listToStringConverter"/>
         <Converters:EpisodeNameConverter x:Key="episodeNameConverter"/>
         <Converters:SerialTypeConverter x:Key="serialTypeConverter"/>
+        <Converters:ViewsVisibilityConverter x:Key="viewsVisibility"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -45,7 +48,7 @@
             </MenuItem>
         </Menu>
         <ToolBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
-            <Button Content="Add"/>
+            <Button Content="Add" Command="{Binding OpenNewEntryPage}"/>
         </ToolBar>
         <StackPanel Grid.Row="2" Grid.RowSpan="4" Grid.Column="0" Orientation="Vertical" Margin="5">
             <TreeView MinWidth="150" MinHeight="100" ItemsSource="{Binding RecordsType}" x:Name="treeView">
@@ -168,8 +171,23 @@
                 <TextBlock Text="{Binding AdditionalInfo.Note}" x:Name="noteView"/>
             </TabItem>
         </TabControl>
+
+        <Border Grid.Row="1" 
+                Grid.RowSpan="5" 
+                Grid.ColumnSpan="4" 
+                Background="#3F000000"                 
+                Visibility="{Binding ElementName=presenter, Path=Content, Converter={StaticResource viewsVisibility}}">
+            <ContentPresenter  Content="{Binding CurrentPage}" x:Name="presenter">
+                <ContentPresenter.Resources>
+                    <DataTemplate DataType="{x:Type Models:NewEntryPageViewModel}">
+                        <Views:NewEntryPageControl/>
+                    </DataTemplate>
+                </ContentPresenter.Resources>
+            </ContentPresenter>
+        </Border>               
+
         <StatusBar Grid.Row="6" Grid.ColumnSpan="4">
             <Label Content="Element"/>
-        </StatusBar>
+        </StatusBar>        
     </Grid>
 </Window>

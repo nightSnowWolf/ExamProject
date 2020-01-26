@@ -1,4 +1,6 @@
-﻿namespace CatAlog.Db.Models.DtoModels.VideoModels
+﻿using System.Collections.ObjectModel;
+
+namespace CatAlog.Db.Models.DtoModels.VideoModels
 {
     public class MediaDto
     {

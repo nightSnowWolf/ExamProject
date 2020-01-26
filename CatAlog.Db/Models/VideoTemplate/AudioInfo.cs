@@ -10,8 +10,6 @@ namespace CatAlog.Db.Models.VideoTemplate
         public int MediaId { get; set; }
         public Media Media { get; set; }
 
-        public IEnumerable<AudioInfo_Actor> AudioInfo_Actors { get; set; }
-
         public string AudioFormat { get; set; }
 
         public string Language { get; set; }

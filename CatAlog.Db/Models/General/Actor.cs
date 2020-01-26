@@ -10,7 +10,5 @@ namespace CatAlog.Db.Models.General
         public string Name { get; set; }
 
         public IEnumerable<AdditionallyInfo_Actor> AdditionallyInfo_Actors { get; set; }
-
-        public IEnumerable<AudioInfo_Actor> AudioInfo_Actors { get; set; }
     }
 }

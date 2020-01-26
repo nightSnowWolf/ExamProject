@@ -1,5 +1,7 @@
 ﻿using CatAlog.Db.DbContexts;
 using CatAlog.Db.Models.DtoModels.VideoModels;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,12 +18,8 @@ namespace CatAlog.Db.Repositories
 
         public List<SubtitleInfoDto> GetEntityById(int id)
         {
-            var mediaId = (from i in _dbContext.SubtitleInfos
-                           where i.Media.GeneralVideoInfoId == id
-                           select i.Id).FirstOrDefault();
-
             var result = (from s in _dbContext.SubtitleInfos
-                          where s.MediaId == mediaId
+                          where s.MediaId == id
                           select new SubtitleInfoDto
                           {
                               Id = s.Id,
@@ -32,5 +30,12 @@ namespace CatAlog.Db.Repositories
                           }).ToList();
             return result;
         }
+
+
+
+
+
+
+
     }
 }

@@ -34,6 +34,8 @@ namespace CatAlog.GUI.ViewModels
 
         private ObservableCollection<SubtitleInfoDto> _subtitleInfo;
 
+        private object _currentPage;
+
 
         public ObservableCollection<string> RecordsType
         {
@@ -74,7 +76,7 @@ namespace CatAlog.GUI.ViewModels
         public MediaDto MediaInfo
         {
             get => _mediaInfo; 
-            set => SetProperty(ref _mediaInfo, value, "MediaDto"); 
+            set => SetProperty(ref _mediaInfo, value, "MediaInfo"); 
         }
 
         public ObservableCollection<VideoInfoDto> VideoInfo
@@ -93,8 +95,14 @@ namespace CatAlog.GUI.ViewModels
         {
             get => _subtitleInfo;
             set => _subtitleInfo = value; 
+        }        
+
+        public object CurrentPage
+        {
+            get { return _currentPage; }
+            set { SetProperty(ref _currentPage, value, "CurrentPage"); }
         }
-               
+
         public MainViewModel()
         {
             _sharedDataRepository = new SharedDataRepository();
@@ -110,6 +118,7 @@ namespace CatAlog.GUI.ViewModels
 
         private RellayCommand _getAllDataCommand;
 
+        private RellayCommand _openNewEntryPage;
 
         public RellayCommand GetSampleDataCommand => 
             _getSampleDataCommand = new RellayCommand(GetSampleData);
@@ -178,7 +187,21 @@ namespace CatAlog.GUI.ViewModels
             var tempResult = repository.GetEntityById(id);
             tempResult.ForEach(s => _subtitleInfo.Add(s));
         }
-                                 
+
+        public RellayCommand OpenNewEntryPage
+        {
+            get
+            {
+                return _openNewEntryPage ??
+                (_openNewEntryPage = new RellayCommand(obj =>
+                {
+                    NewEntryPageViewModel newEntryPage = new NewEntryPageViewModel();
+                    CurrentPage = newEntryPage;
+                    newEntryPage.CloseHandler += (() => { CurrentPage = null; });
+                }));
+            }
+        }
+
         private void ClearObjects()
         {       
             if (_generalInfo != null)
@@ -191,6 +214,6 @@ namespace CatAlog.GUI.ViewModels
                 _audioInfo.Clear();
                 _subtitleInfo.Clear();
             }
-        }
+        }       
     }
 }

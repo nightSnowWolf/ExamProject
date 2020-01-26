@@ -1,9 +1,6 @@
 ﻿using CatAlog.Db.DbContexts;
-using CatAlog.Db.Models.General;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CatAlog.Db.Repositories
 {
@@ -19,6 +16,11 @@ namespace CatAlog.Db.Repositories
         public List<string> GetAllTypes()
         {
             return _dbContext.GeneralTypes.Select(t => t.Type).ToList();
+        }
+
+        public List<string> GetAllTemplates()
+        {
+            return _dbContext.Templates.Select(s => s.Name).ToList();
         }
     }
 }
